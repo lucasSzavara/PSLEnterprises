@@ -1,0 +1,19 @@
+/api_PSLEnterprises/db.sqlite3
+/PSLEnterprises/node_modules
+
+# testing
+/PSLEnterprises/coverage
+
+# production
+/PSLEnterprises/build
+
+# misc
+/PSLEnterprises/DS_Store
+/PSLEnterprises/env.local
+/PSLEnterprises/env.development.local
+/PSLEnterprises/env.test.local
+/PSLEnterprises/env.production.local
+
+/PSLEnterprises/npm-debug.log*
+/PSLEnterprises/yarn-debug.log*
+/PSLEnterprises/yarn-error.log*

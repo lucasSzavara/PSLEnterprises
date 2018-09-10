@@ -1,0 +1,9 @@
+#respostas{
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    height: 70vh;
+    width: 50vw;
+    justify-content: center;
+    align-items: center;
+}
