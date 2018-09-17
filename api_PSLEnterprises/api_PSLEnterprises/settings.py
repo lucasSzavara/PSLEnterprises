@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'pergunta',
     'rest_framework',
     'django_filters',
-    'login',
+    'tela_principal',
     'corsheaders'
 ]
 
@@ -57,7 +57,7 @@ MIDDLEWARE = [
 ]
 
 
-ROOT_URLCONF = 'api_jogo.urls'
+ROOT_URLCONF = 'api_PSLEnterprises.urls'
 
 TEMPLATES = [
     {
@@ -75,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'api_jogo.wsgi.application'
+WSGI_APPLICATION = 'api_PSLEnterprises.wsgi.application'
 
 
 # Database

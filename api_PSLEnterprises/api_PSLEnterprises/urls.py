@@ -18,6 +18,6 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     url(r'^', include('pergunta.urls')),
-    url(r'^', include('login.urls')),
+    url(r'^', include('tela_principal.urls')),
     url(r'^admin/', admin.site.urls),
 ]

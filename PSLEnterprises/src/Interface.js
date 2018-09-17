@@ -7,7 +7,7 @@ class Interface extends Component{
     render(){
         return(
             <div id="interface">
-                <Decisoes/>
+                <Decisoes id={1}/>
             </div>
         );
     }
