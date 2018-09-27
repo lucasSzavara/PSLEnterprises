@@ -5,9 +5,11 @@ class Usuarios(models.Model):
     nome = models.CharField(max_length=10)
     senha = models.CharField(max_length=20)
 
-    rel_inv = models.IntegerField('Relacionamento com os investidores', default=75)
-    rel_pub = models.IntegerField('Relacionamento com o publico', default=75)
-    rel_trab = models.IntegerField('Relacionamento com os trabalhadores',
+    utilizacao = models.IntegerField('Senso de utilização', default=75)
+    organizacao = models.IntegerField('Senso de organização', default=75)
+    disciplina = models.IntegerField('Senso de disciplina', default=75)
+    saude = models.IntegerField('Senso de saude', default=75)
+    limpeza = models.IntegerField('Senso de limpeza',
                                    default=75)
     producao = models.IntegerField(default=1000000)
     gastos = models.IntegerField(default=100000)
