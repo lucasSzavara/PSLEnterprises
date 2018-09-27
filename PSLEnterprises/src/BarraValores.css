@@ -1,0 +1,9 @@
+.barraValores{
+    height: 10px;
+    width: 100px;
+    background-color: white;
+}
+.valor{
+    height: 100%;
+    background-color: green;
+}
