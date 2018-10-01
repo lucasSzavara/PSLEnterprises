@@ -20,10 +20,9 @@ class Decisoes extends Component{
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({'id': this.props.id, 'pergunta': this.state.pergunta || 'none', 'resposta': this.state.lista[this.state.posicao] || 'none'})
         }).then(promessa => promessa.json()).then(dados => {
-            let perguntaAtual =  dados.texto_pergunta;
-            let resposta = dados.texto_resposta;
-            console.log(this.state.pergunta || 'none');
-            console.log(this.state.lista[this.state.posicao] || 'none');
+            let perguntaAtual =  dados.pergunta;
+            let resposta = dados.resposta;
+            this.props.atualizar(dados)
             this.setState({pergunta: perguntaAtual, lista: resposta})
         });
     }

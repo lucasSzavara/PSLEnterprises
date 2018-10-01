@@ -1,8 +1,17 @@
 .barraValores{
     height: 10px;
-    width: 100px;
+    width: 250px;
     background-color: white;
+    margin: 10px;
+    display: inline-block;
 }
+
+.barraValores > p{
+    color: black;
+    font-size: 10px;
+    margin: 0;
+}
+
 .valor{
     height: 100%;
     background-color: green;

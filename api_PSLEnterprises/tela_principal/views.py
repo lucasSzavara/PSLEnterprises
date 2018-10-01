@@ -119,9 +119,12 @@ class UsuariosUpdate(generics.UpdateAPIView):
             aumenta.append(i.aumenta)
             diminui.append(i.diminui)
         data = {
-            'texto_pergunta': pergunta.texto_pergunta,
-            'texto_resposta': textos_respostas,
-            'aumenta': aumenta,
-            'diminui': diminui
+            'pergunta': pergunta.texto_pergunta,
+            'resposta': textos_respostas,
+            'disciplina': compativel.disciplina,
+            'saude': compativel.saude,
+            'organizacao': compativel.organizacao,
+            'limpeza': compativel.limpeza,
+            'utilizacao': compativel.utilizacao
         }
         return Response(data, headers={'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})

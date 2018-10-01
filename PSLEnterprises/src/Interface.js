@@ -7,7 +7,7 @@ class Interface extends Component{
     render(){
         return(
             <div id="interface">
-                <Decisoes id={1}/>
+                <Decisoes id={1} atualizar={this.props.atualizar}/>
             </div>
         );
     }

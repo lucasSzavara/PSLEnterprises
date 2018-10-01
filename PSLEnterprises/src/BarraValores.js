@@ -6,6 +6,7 @@ class BarraValores extends Component {
         return (
             <div className="barraValores">
                 <div className="valor" style={{width: this.props.valor}}></div>
+                <p>{this.props.nome}</p>
             </div>
         );
     }
