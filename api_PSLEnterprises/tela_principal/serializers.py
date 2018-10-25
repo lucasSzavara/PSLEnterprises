@@ -14,3 +14,10 @@ class UsuariosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuarios
         fields = '__all__'
+
+
+class CreateUser(serializers.ModelSerializer):
+
+    class Meta:
+        model = Usuarios
+        fields = ('nome', 'senha')

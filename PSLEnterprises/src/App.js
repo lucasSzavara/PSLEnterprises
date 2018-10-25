@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Interface from './Interface';
-import BarraValores from './BarraValores';
+import Interface from './gameComponents/Interface';
+import BarraValores from './gameComponents/BarraValores';
 import './App.css';
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
 
         this.state = {
             pergunta: '',
-            resposta: '',
+            resposta: [],
             utilizacao: 75,
             organizacao: 75,
             disciplina: 75,
@@ -29,11 +29,13 @@ class App extends Component {
         return (
             <div className="App">
                 <Interface atualizar={this.atualizarValores}/>
-                <BarraValores valor={`${this.state.utilizacao}%`} nome="Utilização"/>
-                <BarraValores valor={`${this.state.organizacao}%`} nome="Organização"/>
-                <BarraValores valor={`${this.state.disciplina}%`} nome="Disciplina"/>
-                <BarraValores valor={`${this.state.saude}%`} nome="Saúde"/>
-                <BarraValores valor={`${this.state.limpeza}%`} nome="Limpeza"/>
+                <div className="Valores">
+                    <BarraValores valor={`${this.state.utilizacao}%`} nome="Utilização"/>
+                    <BarraValores valor={`${this.state.organizacao}%`} nome="Organização"/>
+                    <BarraValores valor={`${this.state.disciplina}%`} nome="Disciplina"/>
+                    <BarraValores valor={`${this.state.saude}%`} nome="Saúde"/>
+                    <BarraValores valor={`${this.state.limpeza}%`} nome="Limpeza"/>
+                </div>
             </div>
         );
     }

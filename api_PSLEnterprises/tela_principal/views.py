@@ -1,15 +1,25 @@
 from rest_framework import generics
 from .models import Usuarios
 from pergunta.models import Pergunta, Resposta
-from .serializers import UsuariosSerializer
+from .serializers import UsuariosSerializer, CreateUser
 from rest_framework.response import Response
+from django.contrib.auth.models import User
 from random import randint
 
     
-class UsuariosList(generics.ListCreateAPIView):
+class UsuariosCreate(generics.ListCreateAPIView):
 
     queryset = Usuarios.objects.all()
-    serializer_class = UsuariosSerializer
+    serializer_class = CreateUser
+
+    def create(self, request):
+        user = User.objects.create_user(username=request.data['nome'],
+                                        password=request.data['senha'])
+        
+        usuario = Usuarios.objects.create(nome=request.data['nome'], senha=request.data['senha'])
+
+        return Response({'Criado': True}, headers={'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})
+
 
 
 class UsuariosUpdate(generics.UpdateAPIView):
@@ -36,14 +46,20 @@ class UsuariosUpdate(generics.UpdateAPIView):
                 if i != 'nada':
                     palavra = i.split('(')
                     palavra[-1] = int(palavra[-1][:-1])
-                    rels[palavra[0]] = rels[palavra[0]] + palavra[-1]
+                    if rels[palavra[0]] + palavra[-1] > 100:
+                        rels[palavra[0]] = 100
+                    else:
+                        rels[palavra[0]] += palavra[-1]
             
             alters = resposta.diminui.split()
             for i in alters:
                 if i != 'nada':
                     palavra = i.split('(')
                     palavra[-1] = int(palavra[-1][:-1])
-                    rels[palavra[0]] = rels[palavra[0]] - palavra[-1]
+                    if rels[palavra[0]] - palavra[-1] < 0:
+                        rels[palavra[0]] = 0
+                    else:
+                        rels[palavra[0]] -= palavra[-1]
 
             compativel.limpeza = rels['limpeza']
             compativel.disciplina = rels['disciplina']

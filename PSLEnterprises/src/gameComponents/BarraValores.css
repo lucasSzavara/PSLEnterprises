@@ -1,13 +1,13 @@
 .barraValores{
     height: 10px;
-    width: 250px;
+    width: 17vw;
     background-color: white;
-    margin: 10px;
+    margin: 2vh;
     display: inline-block;
 }
 
 .barraValores > p{
-    color: black;
+    color: white;
     font-size: 10px;
     margin: 0;
 }

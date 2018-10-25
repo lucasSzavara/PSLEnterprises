@@ -14,7 +14,7 @@ class Botao extends Component{
 
     render(){
         return(
-            <div id="botao">
+            <div>
                 <button>{this.preparar(this.props.texto)}</button>
             </div>
         );

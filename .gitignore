@@ -1,13 +1,20 @@
 /api_PSLEnterprises/db.sqlite3
+/api_PSLEnterprises/python.exe
+/api_PSLEnterprises/python.pdb
+/api_PSLEnterprises/python3.dll
+/api_PSLEnterprises/python36.dll
+/api_PSLEnterprises/python36.pdb
+/api_PSLEnterprises/pythonw.exe
+/api_PSLEnterprises/pythonw.pdb
+
 /PSLEnterprises/node_modules
 
-# testing
+
 /PSLEnterprises/coverage
 
-# production
 /PSLEnterprises/build
 
-# misc
+
 /PSLEnterprises/DS_Store
 /PSLEnterprises/env.local
 /PSLEnterprises/env.development.local
