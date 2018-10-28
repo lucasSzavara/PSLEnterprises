@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Botao.css';
+import { Link } from 'react-router-dom';
 
 class Botao extends Component {
 
@@ -11,8 +12,13 @@ class Botao extends Component {
   }
 
   render() {
-      return (
-          <button onClick={this.props.clicar}>{this.preparar(this.props.texto)}</button>
+    if(this.props.texto === this.props.ativo)
+      return(
+        <button onClick={this.props.clicar} className="ativo">{this.preparar(this.props.texto)}</button>
+      );
+
+    return (
+      <button onClick={this.props.clicar}>{this.preparar(this.props.texto)}</button>
     );
   }
 }

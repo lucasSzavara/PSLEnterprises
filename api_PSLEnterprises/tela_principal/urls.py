@@ -8,6 +8,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-        url(r'^usuarios/$', views.UsuariosCreate.as_view(), name='usuarios'),
+        url(r'^cadastro/$', views.UsuariosCreate.as_view(), name='cadastro'),
+        url(r'^login/$', views.UsuariosLogin.as_view(), name='login'),
         url(r'^usuario/(?P<pk>[0-9]+)/$', views.UsuariosUpdate.as_view(), name='usuario-put'),
 ]

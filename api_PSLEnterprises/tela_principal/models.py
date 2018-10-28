@@ -3,7 +3,7 @@ from django.db import models
 
 class Usuarios(models.Model):
     nome = models.CharField(max_length=10)
-    senha = models.CharField(max_length=20)
+    senha = models.CharField(max_length=20, default='12345')
 
     utilizacao = models.IntegerField('Senso de utilização', default=75)
     organizacao = models.IntegerField('Senso de organização', default=75)

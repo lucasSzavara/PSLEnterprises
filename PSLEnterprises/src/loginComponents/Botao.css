@@ -1,10 +1,11 @@
 button{
-    width: 40%;
+    width: 50%;
     height: 40px;
     border: none;
-    background-color: teal;
-    border-radius: 15%;
-    color: red;
+    border-radius: 0%;
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
     font-size: 22pt;
     cursor: pointer;
+    border-radius: 5px;
 }

@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'pergunta',
     'rest_framework',
     'tela_principal',
-    'corsheaders'
+    'corsheaders',
+    'oauth2_provider'
 ]
 
 MIDDLEWARE = [
@@ -126,4 +127,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
 CORS_ORIGIN_ALLOW_ALL = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    )
+}
+
+OAUTH2_PROVIDER = {
+    # this is the list of available scopes
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'},
+    'ACCESS_TOKEN_EXPIRE_SECONDS': 36000 * 2,
+}

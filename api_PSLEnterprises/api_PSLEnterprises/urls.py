@@ -18,6 +18,7 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     url(r'^', include('pergunta.urls')),
+    url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^', include('tela_principal.urls')),
     url(r'^admin/', admin.site.urls),
 ]

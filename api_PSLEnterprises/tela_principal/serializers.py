@@ -20,4 +20,4 @@ class CreateUser(serializers.ModelSerializer):
 
     class Meta:
         model = Usuarios
-        fields = ('nome', 'senha')
+        fields = '__all__'

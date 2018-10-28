@@ -16,12 +16,16 @@ class Decisoes extends Component{
     }
 
     escolherPergunta = (respostaEscolhida) => {
+        console.log(this.props.idUser);
         return(
             () =>{
                 this.setState({'escolhida': respostaEscolhida});
-                fetch(`http://localhost:8000/usuario/${this.props.id}/`, {method: 'PUT',
-                            headers: {'Content-Type': 'application/json'},
-                            body: JSON.stringify({'id': this.props.id, 'pergunta': this.state.pergunta || 'none', 'resposta': this.state.escolhida || 'none'})
+                let obj = JSON.stringify({'id': this.props.idUser, 'pergunta': this.state.pergunta || 'none', 'resposta': respostaEscolhida || 'none'});
+                console.log(obj);
+                fetch(`http://localhost:8000/usuario/${this.props.idUser}/`, {method: 'PUT',
+                            headers: {'Content-Type': 'application/json',
+                                      'Authorization': `Bearer ${this.props.token}`},
+                            body: obj
                 }).then(promessa => promessa.json()).then(dados => {
                     let perguntaAtual =  dados.pergunta;
                     let resposta = dados.resposta;
@@ -37,7 +41,6 @@ class Decisoes extends Component{
     }
 
     render(){
-
         return(
             <div id="decisoes">
                 <Pergunta pergunta={this.state.pergunta}/>

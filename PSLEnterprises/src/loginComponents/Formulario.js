@@ -7,14 +7,14 @@ import FormularioLogin from './FormularioLogin';
 class Formulario extends Component {
 
   render() {
-    if(this.props.tela == "login"){
+    if(this.props.tela === "login"){
      return(
-      <FormularioLogin />
+      <FormularioLogin login={this.props.login}/>
      );
     }
-    else if(this.props.tela == "cadastro"){
+    else if(this.props.tela === "cadastro"){
       return (
-        <FormularioCadastro />
+        <FormularioCadastro login={this.props.login}/>
       );
     }
     return (<div></div>);

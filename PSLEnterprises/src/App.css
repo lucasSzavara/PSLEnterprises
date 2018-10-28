@@ -1,5 +1,22 @@
-.Valores{
-    display: inline-block;
-    width: 20vw;
+#tela{
+    background-color: darkgray;
+    width: 100vw;
+    height: 100vh;
+}
+
+#form{
+    border-radius: 10px;
+    background-color: gray;
+    width: 60%;
     height: 50vh;
+    position: absolute;
+    left: 20%;
+    top: 25vh;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+#form > h2{
+    margin-left: 30%;
 }

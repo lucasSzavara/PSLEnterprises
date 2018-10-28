@@ -1,0 +1,13 @@
+.Valores{
+    display: inline-block;
+    width: 20vw;
+    height: 50vh;
+}
+
+#produc{
+    color: green;
+}
+
+#gastos{
+    color: red;
+}
