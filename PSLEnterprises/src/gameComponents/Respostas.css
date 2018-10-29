@@ -1,18 +1,29 @@
 #respostas{
-    position: absolute;
-    top: 250px;
-    left: 57vw;
     height: 70vh;
-    width: 23%;
-    justify-content: space-between;
-    align-items: space-between;
+    width: 79%;
+    margin: 10%;
 }
-
+@font-face{
+    font-family: Bentosa;
+    src: url("fonts/bentosa/Bentosa.ttf");
+}
 .resposta{
-    display: block;
+    display: contents;
     padding: 0;
     border: 0;
+    margin: 0px;
     margin-bottom: 20px;
+    width: 100%;
     background-color: rgb(245, 245, 247);
-    font-size: 20px;
+    color: black;
+    font-family: Bentosa;
+    font-style: italic;
+    font-size: 25px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.resposta > p{
+    display: block;
+    margin: 0;
 }

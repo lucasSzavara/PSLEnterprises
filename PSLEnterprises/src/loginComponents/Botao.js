@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Botao.css';
-import { Link } from 'react-router-dom';
 
 class Botao extends Component {
 

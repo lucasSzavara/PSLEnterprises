@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Interface from './gameComponents/Interface';
 import Formulario from './loginComponents/Formulario';
 import Controle from './loginComponents/Controle';
@@ -32,7 +32,7 @@ export default class App extends Component {
                     console.log(this.state);
                     fetch('http://localhost:8000/o/token/', {method: 'POST', headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
-                        }, body: `grant_type=password&client_id=1MhTMJV72QqRKEH4MqYtEY9t2M1odvwndAtrAHYN&client_secret=F6GycxdeS5lLHJvZdV7JGbPghJIo7z5LHwDDecwLEzqVNFCO53PA1plla4at5zCfOEGgWZguw1joQZ3w0GtxgdmL2OcXS4t1QtF1NPTyxQ9VQdGJmOb4kyAuxVWD7w1v&username=${login}&password=${senha}`}).then(promessa => promessa.json()).then(dados =>{
+                        }, body: `grant_type=password&client_id=bCsbK8F9uOUYHPPOiY2bnqBMvaU6nMtCB3hCwavX&client_secret=A1lAKjYNsSNuDskq7Rw71WFS5P4zEebhXBZAzPg9KVT1QyCjctc147c0sKzFJyDsaBEjgvFErDirzS934ndTRVNlwYf3DkhbnYQo1JNo7Uqy0VgbQaBSJZr3P4K29uWE&username=${login}&password=${senha}`}).then(promessa => promessa.json()).then(dados =>{
                             console.log(dados);
                             this.setState({'token': dados.access_token});
                     });

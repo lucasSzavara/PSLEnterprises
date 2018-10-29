@@ -93,7 +93,7 @@ class UsuariosUpdate(generics.UpdateAPIView):
             compativel.utilizacao = rels['utilizacao']
             compativel.organizacao = rels['organizacao']
             compativel.saude = rels['saude']
-            compativel.producao = rels['producao']
+            compativel.producao = rels['producao'] + 0.2 * (compativel.disciplina + compativel.saude + compativel.organizacao + compativel.limpeza + compativel.utilizacao)
             compativel.gastos = rels['gastos']
             compativel.ult_alt = request.data['pergunta'] + '-' + request.data['resposta']
             compativel.save()
@@ -158,7 +158,7 @@ class UsuariosUpdate(generics.UpdateAPIView):
         #     pergunta_existe = True
 
         if not pergunta_existe:
-            pergunta = Pergunta.objects.get(pk=18)
+            pergunta = Pergunta.objects.get(pk=randint(19, 32))
         respostas = Resposta.objects.filter(pergunta__texto_pergunta=pergunta.texto_pergunta)
         textos_respostas = []
         for i in respostas.iterator():
