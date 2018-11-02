@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Interface from './gameComponents/Interface';
+import Tutorial from './gameComponents/Tutorial';
+import Animacao from './gameComponents/Animacao';
 import Formulario from './loginComponents/Formulario';
 import Controle from './loginComponents/Controle';
 import './App.css';
@@ -11,7 +13,8 @@ export default class App extends Component {
     
         this.state = {
             atual: "cadastro",
-            id: 0
+            id: 0,
+            perdeu: false
         };
     }
     
@@ -23,9 +26,22 @@ export default class App extends Component {
         this.setState({atual: "cadastro"});
     }
 
+    atualizar = (dado) =>{
+        this.setState({'perdeu': dado});
+    }
+
+    gif = () =>{
+        this.setState({atual: 'animacao'})
+    }
+
+    sairTutorial = () => {
+        this.setState({atual: 'jogo'});
+    }
+
     login = (texto, login, senha) =>{
         return(
             () => {
+                this.setState({atual: 'tutorial'});
                 let obj = JSON.stringify({'nome': login, 'senha': senha});
                 fetch(`http://localhost:8000/${texto}/`, {method: 'POST', headers: {'Content-type': 'application/json'}, body: obj}).then(promessa => promessa.json()).then(dados => {
                     this.setState({'id': dados.id});
@@ -42,8 +58,17 @@ export default class App extends Component {
     }
 
     render() {
-        console.log(this.state.id);
-        if(this.state.id == 0 || this.state.token == undefined){
+        if (this.state.atual === 'tutorial') {
+            return(
+                <Tutorial sair={this.sairTutorial}/>
+            );
+        }
+        else if(this.state.atual === 'animacao'){
+            return(
+                <Animacao idUser={this.state.id} token={this.state.token} atualizar={this.sairTutorial}/>
+            );
+        }
+        else if(this.state.id == 0 || this.state.token == undefined){
             return(
                 <div id="tela">
                     <div id="form">
@@ -55,7 +80,7 @@ export default class App extends Component {
             );
         }
         return(
-            <Interface idUser={this.state.id} token={this.state.token}/>
+            <Interface gif={this.gif}idUser={this.state.id} token={this.state.token} atualizar={this.atualizar}/>
         );
     }
 }

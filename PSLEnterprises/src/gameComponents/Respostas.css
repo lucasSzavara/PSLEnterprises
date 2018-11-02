@@ -1,7 +1,8 @@
 #respostas{
-    height: 70vh;
+    height: 70%;
     width: 79%;
     margin: 10%;
+    margin-bottom: 0;
 }
 @font-face{
     font-family: Bentosa;

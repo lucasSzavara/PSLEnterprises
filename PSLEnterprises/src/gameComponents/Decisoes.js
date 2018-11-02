@@ -44,7 +44,7 @@ class Decisoes extends Component{
         return(
             <div id="decisoes">
                 <Pergunta pergunta={this.state.pergunta}/>
-                <Respostas responder={this.escolherPergunta} lista={this.state.lista}/>
+                <Respostas gif={this.props.gif} responder={this.escolherPergunta} lista={this.state.lista}/>
             </div>
         );
     }

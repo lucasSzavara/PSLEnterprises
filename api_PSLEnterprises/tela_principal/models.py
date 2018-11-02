@@ -14,6 +14,7 @@ class Usuarios(models.Model):
     producao = models.IntegerField(default=1000000)
     gastos = models.IntegerField(default=100000)
     ult_alt = models.CharField('Ultima alteração', max_length=500, default='none')
+    perdeu = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nome

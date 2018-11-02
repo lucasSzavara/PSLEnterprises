@@ -1,0 +1,29 @@
+#paulo{
+    background-image: url("images/paulo.jpg");
+    background-repeat: no-repeat;
+    height: 184px;
+    position: absolute;
+    bottom: 0;
+    left: 30vw;
+    width: 20vw;
+}
+
+#fala{
+    display: inline-block;
+    border: 5px;
+    border-style: solid;
+    border-radius: 95%;
+    border-color: black;
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    bottom: 200px;
+    left: 20vw;
+    background-color: white;
+}
+
+#fala > p{
+    position: relative;
+    top: 10%;
+    left: 10%;
+}

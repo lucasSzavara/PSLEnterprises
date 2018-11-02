@@ -3,6 +3,11 @@ import "./Respostas.css";
 
 class Respostas extends Component{
 
+    clicar(i){
+        this.props.responder(i);
+        this.props.gif();
+    }
+
     render(){
         return(
             <div id="respostas">

@@ -1,9 +1,20 @@
 .barraValores{
     height: 10px;
-    width: 17vw;
+    width: 80%;
     background-color: white;
     margin: 2vh;
     display: inline-block;
+}
+
+.barraValores > h5{
+    display: inline-block;
+    position: relative;
+    left: 18vw;
+    bottom: 2vh;
+    color: white;
+    margin: 0;
+    width: 35px;
+    padding-left: 10px;
 }
 
 .barraValores > p{

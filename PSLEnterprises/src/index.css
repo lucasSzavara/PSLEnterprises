@@ -2,6 +2,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background-image: url("gameComponents/images/Madeira Comum 2.png");
-    background-repeat: no-repeat;
+    background-image: url("gameComponents/images/mesa.png");
+    width: 98vw;
+    height: 98vh;
+    background-repeat: round;
 }
