@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Interface from './gameComponents/Interface';
 import Tutorial from './gameComponents/Tutorial';
 import Animacao from './gameComponents/Animacao';
+import FimDeJogo from './gameComponents/FimDeJogo';
 import Formulario from './loginComponents/Formulario';
 import Controle from './loginComponents/Controle';
 import './App.css';
@@ -15,11 +16,11 @@ export default class App extends Component {
             atual: "cadastro",
             id: 0,
             perdeu: false,
-            utilizacao: 75,
-            organizacao: 75,
-            disciplina: 75,
-            saude: 75,
-            limpeza: 75,
+            utilizacao: 50,
+            organizacao: 50,
+            disciplina: 50,
+            saude: 50,
+            limpeza: 50,
             producao: 1000000,
             gastos: 10000,
             resposta: '',
@@ -40,8 +41,12 @@ export default class App extends Component {
         this.setState({atual: "animacao"});
     }
 
-    sairTutorial = () => {
+    jogo = () => {
         this.setState({atual: 'jogo'});
+    }
+
+    recomecar = () =>{
+        this.setState({perdeu: false})
     }
 
     atualizar = (dados) => {
@@ -66,14 +71,19 @@ export default class App extends Component {
     }
 
     render() {
-        if (this.state.atual === 'tutorial') {
+        if(this.state.perdeu){
             return(
-                <Tutorial sair={this.sairTutorial}/>
+                <FimDeJogo  zero={this.state.zero} voltar={this.recomecar}/>
+            );
+        }
+        else if (this.state.atual === 'tutorial') {
+            return(
+                <Tutorial sair={this.jogo}/>
             );
         }
         else if(this.state.atual === 'animacao'){
             return(
-                <Animacao gif={this.gif} sair={this.sairTutorial} utilizacao={this.state.utilizacao} disciplina={this.state.disciplina} organizacao={this.state.organizacao} saude={this.state.saude} limpeza={this.state.limpeza} producao={this.state.producao} gastos={this.state.gastos}/>
+                <Animacao gif={this.gif} sair={this.jogo} utilizacao={this.state.utilizacao} disciplina={this.state.disciplina} organizacao={this.state.organizacao} saude={this.state.saude} limpeza={this.state.limpeza} producao={this.state.producao} gastos={this.state.gastos}/>
             );
         }
         else if(this.state.id == 0 || this.state.token == undefined){

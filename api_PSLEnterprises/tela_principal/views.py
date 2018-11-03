@@ -53,6 +53,7 @@ class UsuariosUpdate(generics.UpdateAPIView):
         compativel = Usuarios.objects.get(id=request.data['id'])
         pergunta_existe = False
         compativel.perdeu = False
+        zero = ''
         if request.data['pergunta'] != 'none' and request.data['resposta'] != 'none':
             rels = {
                 'limpeza': compativel.limpeza,
@@ -98,16 +99,17 @@ class UsuariosUpdate(generics.UpdateAPIView):
             for i, j in rels.items():
                 if j == 0:
                     compativel.perdeu = True
-                    compativel.limpeza = 75
-                    compativel.disciplina = 75
-                    compativel.utilizacao = 75
-                    compativel.organizacao = 75
-                    compativel.saude = 75
+                    compativel.limpeza = 50
+                    compativel.disciplina = 50
+                    compativel.utilizacao = 50
+                    compativel.organizacao = 50
+                    compativel.saude = 50
+                    zero = i
             compativel.save()
     
 
         if not pergunta_existe:
-            pergunta = Pergunta.objects.get(pk=randint(19, 32))
+            pergunta = Pergunta.objects.get(pk=randint(19, 100))
         respostas = Resposta.objects.filter(pergunta__texto_pergunta=pergunta.texto_pergunta)
         textos_respostas = []
         for i in respostas.iterator():
@@ -122,6 +124,7 @@ class UsuariosUpdate(generics.UpdateAPIView):
             'utilizacao': compativel.utilizacao,
             'producao': compativel.producao,
             'gastos': compativel.gastos,
-            'perdeu': compativel.perdeu
+            'perdeu': compativel.perdeu,
+            'zero': zero
         }
         return Response(data, headers={'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})
