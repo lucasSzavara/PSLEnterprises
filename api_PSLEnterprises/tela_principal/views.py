@@ -52,6 +52,7 @@ class UsuariosUpdate(generics.UpdateAPIView):
     def update(self, request, **params):
         compativel = Usuarios.objects.get(id=request.data['id'])
         pergunta_existe = False
+        compativel.perdeu = False
         if request.data['pergunta'] != 'none' and request.data['resposta'] != 'none':
             rels = {
                 'limpeza': compativel.limpeza,

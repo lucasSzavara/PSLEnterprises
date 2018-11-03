@@ -14,7 +14,17 @@ export default class App extends Component {
         this.state = {
             atual: "cadastro",
             id: 0,
-            perdeu: false
+            perdeu: false,
+            utilizacao: 75,
+            organizacao: 75,
+            disciplina: 75,
+            saude: 75,
+            limpeza: 75,
+            producao: 1000000,
+            gastos: 10000,
+            resposta: '',
+            pergunta: '',
+            resposta: []
         };
     }
     
@@ -26,16 +36,16 @@ export default class App extends Component {
         this.setState({atual: "cadastro"});
     }
 
-    atualizar = (dado) =>{
-        this.setState({'perdeu': dado});
-    }
-
     gif = () =>{
-        this.setState({atual: 'animacao'})
+        this.setState({atual: "animacao"});
     }
 
     sairTutorial = () => {
         this.setState({atual: 'jogo'});
+    }
+
+    atualizar = (dados) => {
+        this.setState(dados);
     }
 
     login = (texto, login, senha) =>{
@@ -45,11 +55,9 @@ export default class App extends Component {
                 let obj = JSON.stringify({'nome': login, 'senha': senha});
                 fetch(`http://localhost:8000/${texto}/`, {method: 'POST', headers: {'Content-type': 'application/json'}, body: obj}).then(promessa => promessa.json()).then(dados => {
                     this.setState({'id': dados.id});
-                    console.log(this.state);
                     fetch('http://localhost:8000/o/token/', {method: 'POST', headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                         }, body: `grant_type=password&client_id=bCsbK8F9uOUYHPPOiY2bnqBMvaU6nMtCB3hCwavX&client_secret=A1lAKjYNsSNuDskq7Rw71WFS5P4zEebhXBZAzPg9KVT1QyCjctc147c0sKzFJyDsaBEjgvFErDirzS934ndTRVNlwYf3DkhbnYQo1JNo7Uqy0VgbQaBSJZr3P4K29uWE&username=${login}&password=${senha}`}).then(promessa => promessa.json()).then(dados =>{
-                            console.log(dados);
                             this.setState({'token': dados.access_token});
                     });
                 });
@@ -65,7 +73,7 @@ export default class App extends Component {
         }
         else if(this.state.atual === 'animacao'){
             return(
-                <Animacao idUser={this.state.id} token={this.state.token} atualizar={this.sairTutorial}/>
+                <Animacao gif={this.gif} sair={this.sairTutorial} utilizacao={this.state.utilizacao} disciplina={this.state.disciplina} organizacao={this.state.organizacao} saude={this.state.saude} limpeza={this.state.limpeza} producao={this.state.producao} gastos={this.state.gastos}/>
             );
         }
         else if(this.state.id == 0 || this.state.token == undefined){
@@ -80,7 +88,7 @@ export default class App extends Component {
             );
         }
         return(
-            <Interface gif={this.gif}idUser={this.state.id} token={this.state.token} atualizar={this.atualizar}/>
+            <Interface pergunta={this.state.pergunta} lista={this.state.resposta} gif={this.gif} idUser={this.state.id} token={this.state.token} atualizarValores={this.atualizar} utilizacao={this.state.utilizacao} disciplina={this.state.disciplina} organizacao={this.state.organizacao} saude={this.state.saude} limpeza={this.state.limpeza} producao={this.state.producao} gastos={this.state.gastos}/>
         );
     }
 }

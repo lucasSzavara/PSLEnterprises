@@ -9,42 +9,36 @@ class Decisoes extends Component{
         super(props);
 
         this.state = {
-            pergunta: "",
-            lista: [],
             escolhida: "",
         };
     }
 
     escolherPergunta = (respostaEscolhida) => {
-        console.log(this.props.idUser);
         return(
             () =>{
                 this.setState({'escolhida': respostaEscolhida});
-                let obj = JSON.stringify({'id': this.props.idUser, 'pergunta': this.state.pergunta || 'none', 'resposta': respostaEscolhida || 'none'});
-                console.log(obj);
+                let obj = JSON.stringify({'id': this.props.idUser, 'pergunta': this.props.pergunta || 'none', 'resposta': respostaEscolhida || 'none'});
                 fetch(`http://localhost:8000/usuario/${this.props.idUser}/`, {method: 'PUT',
                             headers: {'Content-Type': 'application/json',
                                       'Authorization': `Bearer ${this.props.token}`},
                             body: obj
                 }).then(promessa => promessa.json()).then(dados => {
-                    let perguntaAtual =  dados.pergunta;
-                    let resposta = dados.resposta;
                     this.props.atualizar(dados);
-                    this.setState({pergunta: perguntaAtual, lista: resposta});
                 });
             }
         );
     }
 
     componentDidMount(){
-        this.escolherPergunta("")();
+        if(this.props.pergunta == "")
+            this.escolherPergunta("")();
     }
 
     render(){
         return(
             <div id="decisoes">
-                <Pergunta pergunta={this.state.pergunta}/>
-                <Respostas gif={this.props.gif} responder={this.escolherPergunta} lista={this.state.lista}/>
+                <Pergunta pergunta={this.props.pergunta}/>
+                <Respostas gif={this.props.gif} responder={this.escolherPergunta} lista={this.props.lista}/>
             </div>
         );
     }

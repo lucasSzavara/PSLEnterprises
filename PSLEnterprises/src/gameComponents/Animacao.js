@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
 import "./Animacao.css";
-import Interface from './Interface';
+import BarraValores from './BarraValores';
 
 class Animacao extends Component{
 
-    atualizar(){
-        setTimeout(this.props.atualizar, 1000);
+    atualizar = () => {
+        setTimeout(this.props.sair, 750);
     }
 
     render(){
+        this.atualizar();
         return(
             <div id="animacao">
-                <Interface idUser={this.props.idUser} token={this.props.token} atualizar={this.props.atualizar}/>
+                <div className="Valores">                        
+                    <BarraValores valor={`${this.props.utilizacao}%`} nome="Seiri (Utilização)"/>
+                    <BarraValores valor={`${this.props.organizacao}%`} nome="Seiton (Organização)"/>
+                    <BarraValores valor={`${this.props.disciplina}%`} nome="Shitsuke (Disciplina)"/>
+                    <BarraValores valor={`${this.props.saude}%`} nome="Seiketsu (Higiene)"/>
+                    <BarraValores valor={`${this.props.limpeza}%`} nome="Seiso (Limpeza)"/>
+                    <h3 id="produc"> Produção: R${this.props.producao}</h3>
+                    <h3 id="gastos">Gastos: R${this.props.gastos}</h3>
+                </div>
             </div>
         );
     }

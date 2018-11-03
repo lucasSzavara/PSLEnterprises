@@ -1,3 +1,9 @@
 #animacao{
-    background-image: url('/PSLEnterprises/src/gameComponents/images/Folha\ GIF.gif');
+    background-image: url('images/gif.gif');
+    background-size: 100%;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    background-repeat: round;
 }
